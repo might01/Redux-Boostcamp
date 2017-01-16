@@ -4,16 +4,22 @@ const TodoItem = (props) => {
   const handleClick = () => {
     props.toggleTodo(props.id)
   }
+  const handleClickDelete = () => {
+    props.deleteTodo(props.id)
+  }
   return (
-    <li className={props.complete ? 'complete' : null} onClick={handleClick}>{ props.text }</li>  // eslint-disable-line
+    <li ><div><p className={props.complete ? 'complete' : null} onClick={handleClick}>{ props.text }</p>
+    <button onClick={handleClickDelete}>delete</button></div>
+    </li>  // eslint-disable-line
   )
 }
 
 TodoItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   complete: PropTypes.bool,
   toggleTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
 }
 
 export default TodoItem

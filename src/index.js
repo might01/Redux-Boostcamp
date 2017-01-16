@@ -8,11 +8,12 @@ import './style.css'
 
 const preloadedState = {
   todos: [
-    { id: 1, text: 'FIFA 17', complete: false },
-    { id: 2, text: 'Feed Dog', complete: true },
+    { id: "1", text: 'FIFA 17', complete: false },
+    { id: "2", text: 'Feed Dog', complete: true },
   ],
 }
-const store = createStore(rootReducer, preloadedState)
+const store = createStore(rootReducer, preloadedState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 ReactDOM.render(
   <Provider store={store}>

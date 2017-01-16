@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline"
+    "dev": "webpack-dev-server --inline --port 9000",
+    "start": "webpack"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
@@ -13,7 +14,8 @@
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",

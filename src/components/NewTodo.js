@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-
+import uuidV1 from 'uuid/v1'
 class NewTodo extends Component {
   constructor(props) {
     super(props)
@@ -8,13 +8,17 @@ class NewTodo extends Component {
     }
     this.addHandler = this.addHandler.bind(this)
     this.changeHandler = this.changeHandler.bind(this)
+    this.changeHandlerKey = this.changeHandlerKey.bind(this)
   }
 
   addHandler() {
-    this.props.addTodo(this.state.text)
-    this.setState({
-      text: '',
-    })
+    if(this.state.text.length !==0)
+    {
+      this.props.addTodo(uuidV1(),this.state.text)
+      this.setState({
+        text: '',
+      })
+    }
   }
 
   changeHandler(event) {
@@ -23,10 +27,18 @@ class NewTodo extends Component {
     })
   }
 
+  changeHandlerKey(event) {
+    if(event.keyCode===13)
+    {
+      this.addHandler();
+    }
+
+  }
+
   render() {
     return (
       <div>
-        <input onChange={this.changeHandler} value={this.state.text} />
+        <input onChange={this.changeHandler}  onKeyUp={this.changeHandlerKey} value={this.state.text} />
         <button onClick={this.addHandler}>Add</button>
       </div>
     )
